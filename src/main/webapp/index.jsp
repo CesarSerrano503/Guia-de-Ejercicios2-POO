@@ -176,7 +176,7 @@
             </div>
             <button class="btn-more" onclick="toggleDescription(this)">Más información</button>
             <div class="card-description">
-                Este ejercicio te permite calcular automáticamente los días de descanso de un trabajador en función de sus años de servicio, ayudando a mejorar la gestión del talento humano.
+                Este ejercicio permite calcular automáticamente los días de descanso de un trabajador en función de sus años de servicio, ayudando a mejorar la gestión de vacaciones.
             </div>
             <a href="Ejercicio2.jsp" class="btn">Ir al Ejercicio</a>
         </div>
@@ -192,7 +192,7 @@
             </div>
             <button class="btn-more" onclick="toggleDescription(this)">Más información</button>
             <div class="card-description">
-                Crea tu propia agenda digital: guarda nombres, teléfonos y correos electrónicos y encuentra fácilmente a las personas importantes cuando más las necesites.
+                Crea tu propia agenda digital: guarda nombres, teléfonos y correos electrónicos y encuentra fácilmente tus datos cuando los necesites.
             </div>
             <a href="Ejercicio3.jsp" class="btn">Ir al Ejercicio</a>
         </div>
@@ -208,7 +208,7 @@
             </div>
             <button class="btn-more" onclick="toggleDescription(this)">Más información</button>
             <div class="card-description">
-                Registra las ventas de vehículos, lleva un control de clientes y obtén estadísticas claras sobre las marcas y años más vendidos. Perfecto para concesionarios o negocios automotrices.
+                Registra las ventas de vehículos, lleva un control de clientes y obtén estadísticas claras sobre las marcas y años más vendidos. Perfecto tener un mejor control de ventas.
             </div>
             <a href="Ejercicio4.jsp" class="btn">Ir al Ejercicio</a>
         </div>
@@ -224,7 +224,7 @@
             </div>
             <button class="btn-more" onclick="toggleDescription(this)">Más información</button>
             <div class="card-description">
-                Calcula automáticamente el precio de lavado de automóviles y aplica descuentos VIP a tus mejores clientes. Ideal para centros de servicio automotriz que desean optimizar su atención.
+                Calcula automáticamente el precio de lavado de automóviles y aplica descuentos VIP a tus mejores clientes. Ideal para optimizar su atención.
             </div>
             <a href="Ejercicio5.jsp" class="btn">Ir al Ejercicio</a>
         </div>
