@@ -1,6 +1,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
+// Hecho por Sara Torres
+// Día: 26/04/2025
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">

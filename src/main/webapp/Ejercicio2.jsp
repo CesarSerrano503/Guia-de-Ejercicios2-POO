@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  // Hecho por Sara Torres
+  // Día: 26/04/2025
+
   <meta charset="UTF-8">
   <title>Cálculo de Vacaciones</title>
   <script src="https://cdn.tailwindcss.com"></script>
