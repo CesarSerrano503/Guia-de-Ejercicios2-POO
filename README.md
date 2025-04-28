@@ -1,17 +1,10 @@
 # Gu-a-de-Ejercicios-2-POO
-¡Claro! Aquí tienes una explicación de cada uno de los ejercicios propuestos:
+Ejercicio 1: Ficha de estudiante: Recibir datos de estudiante por POST, validar formatos (carnet, teléfono, email, fecha), longitudes (nombres, apellidos, dirección), y mostrar en tabla HTML, indicando errores de validación.
 
-Ejercicio 1: Ficha de estudiante
+Ejercicio 2: Cálculo de vacaciones: Recibir datos de persona (incluyendo salario y fecha de ingreso), calcular días de vacaciones según antigüedad (1-3 años: 10, 3-5 años: 15, >5 años: 21), y mostrar información con días de vacaciones, validando los campos.
 
-Este ejercicio se centra en la recepción y validación de datos de un formulario web utilizando un Servlet en Java. Imagina que tienes un formulario donde un estudiante ingresa su información personal.
+Ejercicio 3: Agenda de contactos: Crea una agenda web para agregar (nombre, teléfono, correo electrónico), ver lista completa y buscar contactos por nombre, con validación de campos.
 
-¿Qué hace el Servlet? Cuando el usuario envía el formulario (mediante el método HTTP POST), el Servlet recibe todos los datos que se ingresaron en los campos.
-Validaciones importantes: La clave de este ejercicio está en verificar que cada dato ingresado cumpla con ciertos requisitos específicos:
-Carnet: Debe seguir un patrón exacto de dos letras seguidas de cuatro números (ejemplo: AB1234).
-Nombres y Apellidos: No deben exceder una longitud máxima de 25 caracteres.
-Dirección: No debe exceder una longitud máxima de 255 caracteres.
-Teléfono: Debe tener el formato preciso de cuatro números, un guion y otros cuatro números (ejemplo: 1234-5678). No se permiten otros formatos.
-Correo electrónico: Debe ser una dirección de correo electrónico válida (con un "@" y un punto "." en la estructura correcta).
-Fecha de Nacimiento: Debe tener el formato día/mes/año con dos dígitos para el día, dos para el mes y cuatro para el año, separados por barras (ejemplo: 25/12/2003).
-Mostrar resultados: Si todos los datos son válidos, el Servlet tomará esta información y la mostrará organizada en una tabla HTML para que sea fácil de leer.
-Manejo de errores: Si algún dato no cumple con las validaciones (por ejemplo, se ingresa un carnet con letras y números revueltos o un teléfono sin el guion), el Servlet debe ser capaz de identificar cuál es el problema y mostrar un mensaje específico al usuario indicando qué tipo de dato no es válido. También debe asegurarse de que todos los campos del formulario hayan sido llenados.
+Ejercicio 4: Importadora: Capturar datos de venta de vehículos (cliente: nombre, sexo; vehículo: marca, año, precio), generar estadísticas por marca y rango de año (2000-2015, 2016-2025), mostrar datos de venta y estadísticas en tablas HTML separadas, validando rangos de año y campos.
+
+Ejercicio 5: Car Clean: Gestionar servicios de lavado (tarifas por tipo de vehículo), aplicar descuento VIP (15%), mostrar lista de clientes registrados desde una base de datos con detalles del servicio y total a pagar (implementando una interfaz totalPago()), validando todos los campos.
