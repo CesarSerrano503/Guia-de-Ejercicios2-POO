@@ -1,4 +1,6 @@
--- Crear la base de datos (si no existe)
+--Autor: Cesar Antonio Serrano Gutierrez
+-- Fecha: 27/4/2025
+-- Crear la base de datos
 CREATE DATABASE IF NOT EXISTS guia2poo;
 USE guia2poo;
 
