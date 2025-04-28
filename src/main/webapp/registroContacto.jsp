@@ -2,7 +2,7 @@
 <%--
     Autor: Cesar Antonio Serrano Gutiérrez
     Fecha: 27-04-2025
-    Descripción: Página para registrar un nuevo contacto en la agenda.
+    Descripción: Página para registrar un nuevo contacto y navegar entre las opciones de la agenda.
 --%>
 
 <!DOCTYPE html>
@@ -27,6 +27,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       width: 100%;
       max-width: 500px;
+      text-align: center;
     }
     h1 {
       text-align: center;
@@ -42,6 +43,7 @@
       margin-bottom: 5px;
       font-weight: bold;
       color: #555;
+      text-align: left;
     }
     input {
       padding: 10px;
@@ -64,16 +66,19 @@
     .submit:hover {
       background-color: #145c32;
     }
-    .btn-back {
-      display: block;
-      text-align: center;
-      margin-top: 20px;
-      font-size: 0.9em;
-      color: #555;
+    .button-link {
+      display: inline-block;
+      background-color: #198754;
+      color: #fff;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 8px;
       text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
     }
-    .btn-back:hover {
-      color: #198754;
+    .button-link:hover {
+      background-color: #145c32;
     }
   </style>
 </head>
@@ -97,7 +102,14 @@
     <input type="submit" class="submit" value="Guardar Contacto">
   </form>
 
-  <a href="index.jsp" class="btn-back">← Volver al menú principal</a>
+  <div style="margin-top: 30px;">
+    <a href="listaContactos.jsp" class="button-link">Ver Lista de Contactos</a><br>
+    <a href="buscarContacto.jsp" class="button-link">Buscar Contacto por Nombre</a>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <a href="index.jsp" class="button-link" style="background-color: #6c757d;">← Volver al menú principal</a>
+  </div>
 </div>
 
 </body>
