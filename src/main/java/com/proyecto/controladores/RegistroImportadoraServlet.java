@@ -19,26 +19,31 @@ import java.util.List;
 @WebServlet(name = "RegistroImportadoraServlet", urlPatterns = {"/RegistroImportadoraServlet"})
 public class RegistroImportadoraServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
+    // Lista en memoria para almacenar los registros de vehículos
     private List<ClienteVehiculo> registros;
 
     @Override
     public void init() throws ServletException {
         super.init();
         registros = new ArrayList<>();
+        // Se guarda la lista de registros en el contexto de la aplicación
         getServletContext().setAttribute("registros", registros);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Obtener lista de registros desde contexto
+        // Obtener lista de registros desde el contexto
         @SuppressWarnings("unchecked")
         List<ClienteVehiculo> regs = (List<ClienteVehiculo>) getServletContext().getAttribute("registros");
 
-        // Calcular estadísticas
+        // Variables para almacenar estadísticas
         int totalNissan = 0, totalToyota = 0, totalKia = 0;
         double sumaNissan = 0, sumaToyota = 0, sumaKia = 0;
         int cnt2000a2015 = 0, cnt2016a2025 = 0;
+
+        // Cálculo de las estadísticas basadas en la lista de registros
         if (regs != null) {
             for (ClienteVehiculo cv : regs) {
                 switch (cv.getMarcaVehiculo()) {
@@ -52,7 +57,7 @@ public class RegistroImportadoraServlet extends HttpServlet {
             }
         }
 
-        // Asignar atributos a la solicitud
+        // Asignar los resultados como atributos de la solicitud
         request.setAttribute("registros", regs);
         request.setAttribute("totalNissan", totalNissan);
         request.setAttribute("sumaNissan", sumaNissan);
@@ -63,29 +68,31 @@ public class RegistroImportadoraServlet extends HttpServlet {
         request.setAttribute("cantidad2000a2015", cnt2000a2015);
         request.setAttribute("cantidad2016a2025", cnt2016a2025);
 
-        // Propagar parámetro success a un atributo booleano
+        // Si hay parámetro "success", marcar éxito
         if (request.getParameter("success") != null) {
             request.setAttribute("success", Boolean.TRUE);
         }
 
-        // Forward a JSP
+        // Redireccionar a la página JSP para mostrar datos
         request.getRequestDispatcher("/Ejercicio4.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Obtener parámetros enviados por el formulario
         String nombre   = request.getParameter("nombre");
         String sexo     = request.getParameter("sexo");
         String marca    = request.getParameter("marca");
         String anioStr  = request.getParameter("anio");
         String precioStr= request.getParameter("precio");
 
+        // Variables de apoyo para validaciones
         String error = null;
         int anio = 0;
         double precio = 0;
 
-        // Validaciones de entrada
+        // Validaciones de los datos ingresados
         if (nombre == null || !nombre.matches("[A-Za-zÁÉÍÓÚáéíóúñÑ ]+")) {
             error = "Nombre inválido. Solo letras y espacios.";
         } else if (!"Masculino".equals(sexo) && !"Femenino".equals(sexo)) {
@@ -102,6 +109,7 @@ public class RegistroImportadoraServlet extends HttpServlet {
                 error = "Año inválido.";
             }
         }
+
         if (error == null) {
             try {
                 precio = Double.parseDouble(precioStr);
@@ -113,18 +121,18 @@ public class RegistroImportadoraServlet extends HttpServlet {
             }
         }
 
-        // Si hay error, reenvío para mostrarlo
+        // Si ocurre un error, reenviar la solicitud para mostrarlo
         if (error != null) {
             request.setAttribute("error", error);
             request.getRequestDispatcher("/Ejercicio4.jsp").forward(request, response);
             return;
         }
 
-        // Crear y guardar el nuevo registro
+        // Si todo está correcto, se crea y almacena el nuevo vehículo
         ClienteVehiculo cv = new ClienteVehiculo(nombre, sexo, marca, anio, precio);
         registros.add(cv);
 
-        // Redirect con success para mostrar mensaje
+        // Redireccionar usando PRG (Post/Redirect/Get) para evitar reenvíos
         response.sendRedirect(request.getContextPath() + "/RegistroImportadoraServlet?success=1");
     }
 }

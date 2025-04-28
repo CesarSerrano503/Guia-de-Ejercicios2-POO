@@ -1,18 +1,22 @@
 <%--
     Autor: Cesar Antonio Serrano Gutiérrez
     Fecha: 2025-04-27
+    Descripción: Página JSP que permite registrar vehículos vendidos y mostrar reportes estadísticos.
 --%>
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.proyecto.modelos.ClienteVehiculo" %>
 <%
+    // Obtener el contexto de la aplicación para formar rutas relativas.
     String ctx = request.getContextPath();
-    // Formateador de números con miles y dos decimales
+
+    // Crear un formateador para mostrar números con separador de miles y dos decimales.
     java.text.NumberFormat nf = java.text.NumberFormat.getNumberInstance(java.util.Locale.US);
     nf.setMinimumFractionDigits(2);
     nf.setMaximumFractionDigits(2);
 
+    // Obtener registros de vehículos y estadísticas desde los atributos del request, con valores por defecto si no existen.
     List<ClienteVehiculo> regs = (List<ClienteVehiculo>) request.getAttribute("registros");
     Integer totalNissan    = request.getAttribute("totalNissan")     != null ? (Integer) request.getAttribute("totalNissan")     : 0;
     Integer totalToyota    = request.getAttribute("totalToyota")     != null ? (Integer) request.getAttribute("totalToyota")     : 0;
@@ -25,11 +29,14 @@
     Boolean success        = (Boolean) request.getAttribute("success");
     String  error          = (String)  request.getAttribute("error");
 %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Importadora de Vehículos</title>
+
+    <!-- Estilos CSS para el diseño de la página -->
     <style>
         body { margin:0; padding:0; background:#f8f9fa; font-family:'Poppins', sans-serif; }
         header { text-align:center; padding:20px; background:#fff; box-shadow:0 2px 4px rgba(0,0,0,0.1); }
@@ -56,6 +63,8 @@
         thead { background:#198754; color:#fff; }
         h2 { text-align:center; margin-top:40px; color:#333; }
     </style>
+
+    <!-- Script para manejar el cambio de pestañas y el mensaje de éxito -->
     <script>
         function showTab(idx) {
             var btns = document.querySelectorAll('.tab-button'),
@@ -78,27 +87,33 @@
         };
     </script>
 </head>
+
 <body>
+
+<!-- Encabezado principal -->
 <header><h1>Importadora de Vehículos</h1></header>
+
+<!-- Botones de navegación entre Registro y Reportes -->
 <div class="tabs">
     <button class="tab-button" onclick="showTab(0)">Registro</button>
     <button class="tab-button" onclick="showTab(1)">Reportes</button>
 </div>
 
-<!-- Registro -->
+<!-- Sección de Registro de Vehículo -->
 <div class="tab-content" id="registro">
     <div class="form-container">
         <% if (success != null && success) { %>
+        <!-- Mensaje de éxito al registrar el vehículo -->
         <div id="successMessage" class="success-message">
             ¡Vehículo registrado correctamente!
         </div>
         <% } %>
+
+        <!-- Formulario de registro -->
         <form action="<%=ctx%>/RegistroImportadoraServlet" method="post">
             <div class="form-group">
                 <label for="nombre">Nombre completo:</label>
-                <input type="text" id="nombre" name="nombre"
-                       required pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ ]+"
-                       title="Solo letras y espacios">
+                <input type="text" id="nombre" name="nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ ]+" title="Solo letras y espacios">
             </div>
             <div class="form-group">
                 <label for="sexo">Sexo:</label>
@@ -125,20 +140,26 @@
                 <label for="precio">Precio del vehículo ($):</label>
                 <input type="number" id="precio" name="precio" min="1" step="0.01" required>
             </div>
+
+            <!-- Botones para registrar o regresar -->
             <div class="actions">
                 <button type="submit" class="btn btn-primary">Registrar</button>
                 <a href="<%=ctx%>/index.jsp" class="btn btn-secondary">Volver al Menú Principal</a>
             </div>
         </form>
+
         <% if (error != null) { %>
+        <!-- Mensaje de error en el registro -->
         <div class="error-message"><%= error %></div>
         <% } %>
     </div>
 </div>
 
-<!-- Reportes -->
+<!-- Sección de Reportes -->
 <div class="tab-content" id="reportes">
     <div class="container">
+
+        <!-- Lista de vehículos vendidos -->
         <h2>Lista de Vehículos Vendidos</h2>
         <table>
             <thead>
@@ -160,6 +181,7 @@
             </tbody>
         </table>
 
+        <!-- Estadísticas por marca -->
         <h2>Estadísticas de Ventas</h2>
         <table>
             <thead>
@@ -172,6 +194,7 @@
             </tbody>
         </table>
 
+        <!-- Estadísticas por rango de años -->
         <h2>Vehículos por Año</h2>
         <table>
             <thead>
@@ -182,7 +205,9 @@
             <tr><td>2016 – 2025</td><td><%= count2016a2025 %></td></tr>
             </tbody>
         </table>
+
     </div>
 </div>
+
 </body>
 </html>

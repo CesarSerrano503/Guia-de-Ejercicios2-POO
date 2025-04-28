@@ -1,4 +1,9 @@
 package com.proyecto.modelos;
+/**
+ * Autor: Cesar Antonio Serrano Gutiérrez
+ * Fecha: 27-04-2025
+ * Descripción: [Explicación breve del archivo]
+ */
 
 
 public class Contacto {
